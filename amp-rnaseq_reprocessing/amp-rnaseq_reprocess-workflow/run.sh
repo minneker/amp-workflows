@@ -4,7 +4,9 @@ export TOIL_AWS_ZONE=us-east-1a
 
 set -x
 
-JOBSTORE=aws:us-east-1:rna-seq-reprocessing-toil-cluster-v001-tthyer-test
+CLUSTERNAME=rna-seq-reprocessing-cluster-dev
+
+JOBSTORE="aws:us-east-1:${CLUSTERNAME}-tthyer-test"
 
 toil clean $JOBSTORE
 
