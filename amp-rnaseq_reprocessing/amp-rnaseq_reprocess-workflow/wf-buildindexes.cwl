@@ -7,6 +7,13 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
+requirements: 
+  - class: StepInputExpressionRequirement
+  - class: ResourceRequirement
+    ramMin: 30000
+    coresMin: 7
+    tmpdirMin: 30000
+    outdirMin: 30000
 inputs:
   - id: genome_fastas
     type: 'File'
