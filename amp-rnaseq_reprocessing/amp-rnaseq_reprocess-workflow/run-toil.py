@@ -99,5 +99,6 @@ subprocess.check_output(["toil-cwl-runner",
   "--preemptableCompensation", preemptable_compensation,
   "--rescueJobsFrequency", rescue_frequency,
   #"--restart",
-  "main-paired.cwl", "main.json"
+  "--rotatingLogging",
+  "main-paired.cwl", "main-small-dataset.json"
 ])
