@@ -49,11 +49,6 @@ inputs:
       position: 1
       prefix: --readFilesIn
 
-  - id: mate_2_fastq
-    type: File?
-    inputBinding:
-      position: 2
-
 #  - id: read_files_command
 #    label: Read files command
 #    type: string
@@ -171,3 +166,4 @@ outputs:
     type: File
     outputBinding:
       glob: "*Log.final.out"
+

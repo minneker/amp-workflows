@@ -8,13 +8,6 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-requirements: 
-  - class: StepInputExpressionRequirement
-  - class: ResourceRequirement
-    ramMin: 30000
-    coresMin: 7
-    tmpdirMin: 30000
-    outdirMin: 30000
 inputs:
   - id: genome_dir
     type: File[]
@@ -103,8 +96,6 @@ steps:
     in:
       - id: mate_1_fastq
         source: picard_samtofastq/mate_1
-      - id: mate_2_fastq
-        source: picard_samtofastq/mate_2
       - id: genome_dir
         source: genome_dir
       - id: nthreads
@@ -118,7 +109,7 @@ steps:
       - id: reads_per_gene
       - id: splice_junctions
       - id: logs
-    run: steps/star_align.cwl
+    run: steps/star_align-se.cwl
     label: STAR spliced alignment
     'sbg:x': 1044.3306884765625
     'sbg:y': 193

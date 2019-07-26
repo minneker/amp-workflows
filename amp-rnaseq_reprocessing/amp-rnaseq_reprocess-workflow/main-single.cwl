@@ -1,7 +1,7 @@
 class: Workflow
 cwlVersion: v1.0
-id: main_paired
-label: main-paired
+id: main_single
+label: main-single
 $namespaces:
   sbg: 'https://www.sevenbridges.com'
 inputs:
@@ -48,12 +48,13 @@ outputs:
     type: File
     'sbg:x': 550
     'sbg:y': -160
-  - id: starlog_merged
+  - id: logs
     outputSource:
-      - merge_starlog/starlog_merged
-    type: File
-    'sbg:x': 50.2137451171875
-    'sbg:y': 299.5
+      - wf_alignment/logs
+    type: File[]
+    'sbg:x': -204.7860107421875
+    'sbg:y': 209.5
+
 steps:
   - id: wf_buildindexes
     in:
@@ -89,7 +90,7 @@ steps:
       - id: reads_per_gene
       - id: logs
       - id: realigned_reads_sam
-    run: ./wf-alignment.cwl
+    run: ./wf-alignment-se.cwl
     label: Alignment sub-workflow
     scatter:
       - synapseid
@@ -160,17 +161,6 @@ steps:
     label: Combine Picard metrics across samples
     'sbg:x': 343.8936767578125
     'sbg:y': -158.5
-  - id: merge_starlog
-    in:
-      - id: logs
-        source:
-          - wf_alignment/logs
-    out:
-      - id: starlog_merged
-    run: steps/merge_starlog.cwl
-    label: merge_starlog
-    'sbg:x': -132.7860107421875
-    'sbg:y': 294.5
 requirements:
   - class: SubworkflowFeatureRequirement
   - class: ScatterFeatureRequirement
