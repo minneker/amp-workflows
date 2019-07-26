@@ -46,7 +46,7 @@ os.environ["TMPDIR"] = "/var/lib/toil"
 cluster_name = "rna-seq-reprocessing-scicomp-toil-cluster-v001"  # scicomp
 
 # Toil options
-run_name = "rna"
+run_name = "tst"
 jobstore = "aws:us-east-1:{}-{}".format(cluster_name, run_name)
 dest_bucket = "s3://{}-out".format(cluster_name)
 log_level = "DEBUG"
