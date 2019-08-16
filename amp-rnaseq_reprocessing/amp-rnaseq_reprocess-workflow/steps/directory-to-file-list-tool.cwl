@@ -8,7 +8,17 @@ requirements: { InlineJavascriptRequirement: {} }
 inputs:
   - id: dir
     type: Directory
-expression: '${return {"files": inputs.dir.listing};}'
+expression: |
+  ${
+    var filtered = []
+    for (var n in inputs.dir.listing) {
+      var o = inputs.dir.listing[n]
+      if (o.class == "File"){
+        filtered.push(o)
+      }
+    }
+    return { "files": filtered }
+  }
 outputs:
   - id: files
     type: File[]
