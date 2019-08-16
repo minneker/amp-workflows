@@ -9,9 +9,10 @@ inputs:
   - id: synapseid
     type: string
 outputs:
-  - id: listing
+  - id: files
     type: File[]
-    outputSource: convert_dir/files
+    outputSource: 
+      - convert_dir/files
 steps:
   - id: syn_get_index
     in:

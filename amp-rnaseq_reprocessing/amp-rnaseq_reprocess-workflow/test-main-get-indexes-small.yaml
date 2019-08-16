@@ -1,0 +1,13 @@
+index_synapseid: syn19985744
+genemodel_gtf:
+  class: File
+  path: ./Ref/chr21-gencode.v24.annotation.gtf
+genome_fastas:
+  class: File
+  path: ./Ref/chr21-GRCh38.fa
+nthreads: 4
+synapse_config:
+  class: File
+  path: /Users/tthyer/.synapseConfig
+synapseid:
+  - syn10879522
