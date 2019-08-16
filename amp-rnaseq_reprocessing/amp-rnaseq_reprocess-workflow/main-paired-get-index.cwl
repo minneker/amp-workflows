@@ -44,13 +44,13 @@ steps:
       - id: synapse_config
         source: synapse_config
     out:
-      - id: listing
+      - id: files
     run: ./wf-getindexes.cwl
     label: Get index files
   - id: wf_alignment
     in:
       - id: genome_dir
-        source: wf_getindexes/listing
+        source: wf_getindexes/files
       - id: genstr
         source: genstr
       - id: nthreads
