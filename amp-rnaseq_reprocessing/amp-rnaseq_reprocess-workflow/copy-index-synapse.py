@@ -8,11 +8,10 @@ from synapseclient import File
 syn = synapseclient.Synapse()
 syn.login()
 
-dirname = 'indexing-output'
+dirname = 'out'
 files = os.listdir(dirname)
 
-# Add a local file to an existing project (syn12345) on Synapse
-project = 'syn20645801'
+project = 'syn19985744'
 path_prefix = os.getcwd()
 for filename in files:
 	path = '{}/{}/{}'.format(path_prefix, dirname, filename)
@@ -20,3 +19,11 @@ for filename in files:
 	f = File(path=path, parent=project)
 	syn.store(f)
 
+
+# delete all children of a synapse id
+
+# project = 'syn19985744'
+# for child in syn.getChildren(project):
+#   synid = child.get('id')
+#   print('deleting {}'.format(synid))
+#   print(syn.delete(synid))
