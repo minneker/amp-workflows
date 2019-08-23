@@ -32,7 +32,7 @@ prices = [h["SpotPrice"] for h in response.get("SpotPriceHistory")]
 
 max_price = max(prices)
 
-ratio_of_max = 1.02  # nudge bid slightly over max to ensure we obtain nodes
+ratio_of_max = 1.1  # nudge bid slightly over max to ensure we obtain nodes
 our_bid = float(max_price) * ratio_of_max
 our_bid = our_bid if our_bid < ondemand else ondemand
 
@@ -57,13 +57,14 @@ log_level = "DEBUG"
 log_file = "/var/log/toil/{}.log".format(run_name)
 log_path = "/var/log/toil/workers/{}".format(run_name)
 worker_logs_dir = "/var/log/toil/workers/{}".format(run_name)
-retry_count = "2"
+retry_count = "5"
 target_time = "1"  # this makes autoscaling aggressive
-default_disk = "450G"  
+default_disk = "450G"
 #node_types = "m5.12xlarge,m5.4xlarge:{}".format(our_bid)
 #max_nodes = "1,2"
-node_types = "m5.4xlarge:{}".format(our_bid)
-max_nodes = "5"
+#node_types = "m5.4xlarge:{}".format(our_bid)
+node_types = "m5.4xlarge"
+max_nodes = "2"
 node_storage = "500"
 preemptable_compensation = "0.5"
 rescue_frequency = "9000"
@@ -95,15 +96,17 @@ subprocess.check_output(["toil-cwl-runner",
   "--writeLogs", worker_logs_dir,
   "--retryCount", retry_count,
   "--metrics",
-  #"--runCwlInternalJobsOnWorkers",
+  "--runCwlInternalJobsOnWorkers",
   "--targetTime", target_time,
-  #"--defaultDisk", default_disk,
+  "--defaultDisk", default_disk,
   "--nodeTypes", node_types,
   "--maxNodes", max_nodes,
   "--nodeStorage", node_storage,
   "--destBucket", dest_bucket,
   "--defaultPreemptable",
   "--preemptableCompensation", preemptable_compensation,
+  "--disableCaching",
+  "--disableChaining",
   "--rescueJobsFrequency", rescue_frequency,
   #"--restart",
   #"main-paired.cwl", "test-main.json"

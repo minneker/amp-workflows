@@ -5,9 +5,9 @@ genemodel_gtf:
 genome_fastas:
   class: File
   path: ./Ref/chr21-GRCh38.fa
-nthreads: 4
+nthreads: 15
 synapse_config:
   class: File
-  path: /Users/tthyer/.synapseConfig
+  path: /home/wpoehlm/.synapseConfig
 synapseid:
   - syn10879522
