@@ -139,7 +139,7 @@ steps:
           - wf_alignment/reads_per_gene
     out:
       - id: combined_counts
-    run: steps/combine_counts_study.cwl
+    run: ./combine_counts_study.cwl
     label: Combine read counts across samples
     'sbg:x': -63.8984375
     'sbg:y': 31.5
@@ -150,7 +150,7 @@ steps:
           - wf_metrics/combined_metrics_csv
     out:
       - id: combined_metrics
-    run: steps/combine_metrics_study.cwl
+    run: ./combine_metrics_study.cwl
     label: Combine Picard metrics across samples
     'sbg:x': 343.8936767578125
     'sbg:y': -158.5
