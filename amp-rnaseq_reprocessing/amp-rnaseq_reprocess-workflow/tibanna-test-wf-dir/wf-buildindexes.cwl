@@ -46,7 +46,7 @@ steps:
         source: genstr
     out:
       - id: genome_dir
-    run: steps/star_index.cwl
+    run: ./star_index.cwl
     label: STAR genomeGenerate
     'sbg:x': -519
     'sbg:y': -354

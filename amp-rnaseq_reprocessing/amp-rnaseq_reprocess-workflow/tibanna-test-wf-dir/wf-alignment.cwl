@@ -61,7 +61,7 @@ steps:
         source: synapseid
     out:
       - id: filepath
-    run: steps/synapse-get-tool.cwl
+    run: ./synapse-get-tool.cwl
     label: Download BAM from Synapse
     'sbg:x': 233.5
     'sbg:y': 207
@@ -73,7 +73,7 @@ steps:
         valueFrom: $(inputs.aligned_reads_sam.nameroot).sorted.bam
     out:
       - id: sorted_reads_bam
-    run: steps/picard_sortsam.cwl
+    run: ./picard_sortsam.cwl
     label: Picard SortSam
     'sbg:x': 458.3077392578125
     'sbg:y': 207
@@ -88,7 +88,7 @@ steps:
     out:
       - id: mate_1
       - id: mate_2
-    run: steps/picard_samtofastq.cwl
+    run: ./picard_samtofastq.cwl
     label: Picard SamToFastq
     'sbg:x': 769.881103515625
     'sbg:y': 93
@@ -111,7 +111,7 @@ steps:
       - id: reads_per_gene
       - id: splice_junctions
       - id: logs
-    run: steps/star_align.cwl
+    run: ./star_align.cwl
     label: STAR spliced alignment
     'sbg:x': 1044.3306884765625
     'sbg:y': 193

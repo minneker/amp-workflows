@@ -36,7 +36,7 @@ steps:
         source: genemodel_gtf
     out:
       - id: picard_refflat
-    run: steps/prep_refflat.cwl
+    run: ./prep_refflat.cwl
     label: Build Picard refFlat
     'sbg:x': -322
     'sbg:y': -236
@@ -48,7 +48,7 @@ steps:
         source: aligned_reads_sam
     out:
       - id: picard_riboints
-    run: steps/prep_riboints.cwl
+    run: ./prep_riboints.cwl
     label: Build Picard ribosomal intervals
     'sbg:x': -319
     'sbg:y': -59
