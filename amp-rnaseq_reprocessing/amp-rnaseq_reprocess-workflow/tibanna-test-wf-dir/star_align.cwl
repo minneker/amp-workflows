@@ -1,4 +1,4 @@
-cwlVersion: v1.1
+cwlVersion: v1.0
 class: CommandLineTool
 label: STAR spliced alignment
 doc: |
