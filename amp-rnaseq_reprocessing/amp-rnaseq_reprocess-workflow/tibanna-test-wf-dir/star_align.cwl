@@ -149,10 +149,10 @@ outputs:
     outputBinding:
       glob: "*Aligned.out.bam"
 
-   - id: transcriptome_aligned_reads_bam
-     type: File
-     outputBinding:
-       glob: "*Aligned.toTranscriptome.out.bam"
+  - id: transcriptome_aligned_reads_bam
+    type: File
+    outputBinding:
+      glob: "*Aligned.toTranscriptome.out.bam"
 
   - id: reads_per_gene
     label: Reads per gene
