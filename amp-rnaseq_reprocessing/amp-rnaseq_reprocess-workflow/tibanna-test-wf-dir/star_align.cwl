@@ -87,12 +87,12 @@ inputs:
     type: string
     default: "STAR"
 
-   - id: output_filename_prefix
-     label: Output filename prefix
-     type: string
-     inputBinding:
-       prefix: --outputFileNamePrefix
-       valueFrom: $(inputs)
+  - id: output_filename_prefix
+    label: Output filename prefix
+    type: string
+    inputBinding:
+      prefix: --outputFileNamePrefix
+      valueFrom: $(inputs)
 
   - id: output_sam_type
     label: Output reads SAM/BAM
