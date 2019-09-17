@@ -26,23 +26,23 @@ requirements:
 baseCommand: ['STAR', '--runMode', 'alignReads']
 
 arguments:
-  - prefix: --genomeDir
-    valueFrom: "$(runtime.outdir)/$(inputs.genstr)"
+#  - prefix: --genomeDir
+#    valueFrom: "$(runtime.outdir)/$(inputs.genstr)"
   - prefix: --outFileNamePrefix
     valueFrom: "$(runtime.outdir)/$(inputs.output_dir_name)"
 
 inputs:
 
-  - id: unaligned_reads_fastq
-    label: Unaligned reads FASTQ
-    doc: |
-      paths to files that contain input read1 (and, if needed, read2)
-    type: File[]
-    inputBinding:
-      position: 1
-      prefix: --readFilesIn
-      itemSeparator: ' '
-      shellQuote: false
+#  - id: unaligned_reads_fastq
+#    label: Unaligned reads FASTQ
+#    doc: |
+#      paths to files that contain input read1 (and, if needed, read2)
+#    type: File[]
+#    inputBinding:
+#      position: 1
+#      prefix: --readFilesIn
+#      itemSeparator: ' '
+#      shellQuote: false
   - id: mate_1_fastq
     type: File
     inputBinding:
@@ -54,12 +54,12 @@ inputs:
     inputBinding:
       position: 2
 
-  - id: read_files_command
-    label: Read files command
-    type: string
-    default: "cat - "
-    inputBinding:
-      prefix: --readFilesCommand
+#  - id: read_files_command
+#    label: Read files command
+#    type: string
+#    default: "cat - "
+#    inputBinding:
+#      prefix: --readFilesCommand
 
   - id: genstr
     label: Reference genome directory
@@ -87,12 +87,12 @@ inputs:
     type: string
     default: "STAR"
 
-  - id: output_filename_prefix
-    label: Output filename prefix
-    type: string
-    inputBinding:
-      prefix: --outputFileNamePrefix
-      valueFrom: $(inputs)
+  # - id: output_filename_prefix
+  #   label: Output filename prefix
+  #   type: string
+  #   inputBinding:
+  #     prefix: --outputFileNamePrefix
+  #     valueFrom: $(inputs)
 
   - id: output_sam_type
     label: Output reads SAM/BAM
@@ -149,10 +149,10 @@ outputs:
     outputBinding:
       glob: "*Aligned.out.bam"
 
-  - id: transcriptome_aligned_reads_bam
-    type: File
-    outputBinding:
-      glob: "*Aligned.toTranscriptome.out.bam"
+  # - id: transcriptome_aligned_reads_bam
+  #   type: File
+  #   outputBinding:
+  #     glob: "*Aligned.toTranscriptome.out.bam"
 
   - id: reads_per_gene
     label: Reads per gene
