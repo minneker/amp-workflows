@@ -35,7 +35,7 @@ inputs:
 outputs:
   - id: combined_metrics_csv
     outputSource:
-      - combined_metrics_csv
+      - combine_metrics/combined_metrics_csv
     type: File
     'sbg:x': 378
     'sbg:y': -85
@@ -76,8 +76,8 @@ steps:
     in:
       - id: picard_metrics
         source:
-          - alignmentsummarymetrics_txt
-          - rnaseqmetrics_txt
+          - picard_alignmentsummarymetrics/alignmentsummarymetrics_txt
+          - picard_rnaseqmetrics/rnaseqmetrics_txt
       - id: basef
         source: basef
       - id: combined_metrics_filename

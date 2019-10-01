@@ -32,19 +32,19 @@ inputs:
 outputs:
   - id: realigned_reads_sam
     outputSource:
-      - realigned_reads_sam
+      - wf_alignment/realigned_reads_sam
     type: 'File[]'
     'sbg:x': -178
     'sbg:y': -472
   - id: combined_counts
     outputSource:
-      - combined_counts
+      - combine_counts/combined_counts
     type: File
     'sbg:x': 57.103759765625
     'sbg:y': 47.5
   - id: combined_metrics
     outputSource:
-      - combined_metrics
+      - combine_metrics/combined_metrics
     type: File
     'sbg:x': 550
     'sbg:y': -160
@@ -69,7 +69,7 @@ steps:
     in:
       - id: genome_dir
         source:
-          - genome_dir
+          - wf_buildindexes/genome_dir
       - id: genstr
         source: genstr
       - id: nthreads
@@ -95,7 +95,7 @@ steps:
       - id: genemodel_gtf
         source: genemodel_gtf
       - id: aligned_reads_sam
-        source: realigned_reads_sam
+        source: wf_alignment/realigned_reads_sam
     out:
       - id: picard_riboints
       - id: picard_refflat
@@ -111,11 +111,11 @@ steps:
       - id: genome_fasta
         source: genome_fastas
       - id: aligned_reads_sam
-        source: realigned_reads_sam
+        source: wf_alignment/realigned_reads_sam
       - id: picard_refflat
-        source: picard_refflat
+        source: wf_buildrefs/picard_refflat
       - id: picard_riboints
-        source: picard_riboints
+        source: wf_buildrefs/picard_riboints
       - id: basef
         source: synapseid
       - id: output_metrics_filename
@@ -136,7 +136,7 @@ steps:
     in:
       - id: read_counts
         source:
-          - reads_per_gene
+          - wf_alignment/reads_per_gene
     out:
       - id: combined_counts
     run: ./combine_counts_study.cwl
@@ -147,7 +147,7 @@ steps:
     in:
       - id: picard_metrics
         source:
-          - combined_metrics_csv
+          - wf_metrics/combined_metrics_csv
     out:
       - id: combined_metrics
     run: ./combine_metrics_study.cwl
