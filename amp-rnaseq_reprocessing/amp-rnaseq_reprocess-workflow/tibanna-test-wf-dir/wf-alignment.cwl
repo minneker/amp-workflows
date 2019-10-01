@@ -30,25 +30,25 @@ inputs:
 outputs:
   - id: splice_junctions
     outputSource:
-      - star_align/splice_junctions
+      - splice_junctions
     type: File
     'sbg:x': 1399.3011474609375
     'sbg:y': 53.5
   - id: reads_per_gene
     outputSource:
-      - star_align/reads_per_gene
+      - reads_per_gene
     type: File
     'sbg:x': 1399.3011474609375
     'sbg:y': 267.5
   - id: logs
     outputSource:
-      - star_align/logs
+      - logs
     type: 'File[]'
     'sbg:x': 1399.3011474609375
     'sbg:y': 374.5
   - id: realigned_reads_sam
     outputSource:
-      - star_align/aligned_reads_sam
+      - aligned_reads_sam
     type: File
     'sbg:x': 1410.3011474609375
     'sbg:y': 504.5
@@ -68,7 +68,7 @@ steps:
   - id: picard_sortsam
     in:
       - id: aligned_reads_sam
-        source: syn_get/filepath
+        source: filepath
       - id: sorted_reads_filename
         valueFrom: $(inputs.aligned_reads_sam.nameroot).sorted.bam
     out:
@@ -80,7 +80,7 @@ steps:
   - id: picard_samtofastq
     in:
       - id: aligned_reads_sam
-        source: picard_sortsam/sorted_reads_bam
+        source: sorted_reads_bam
       - id: reads_r1_fastq
         valueFrom: $(inputs.aligned_reads_sam.nameroot)_1.fastq
       - id: reads_r2_fastq
@@ -95,9 +95,9 @@ steps:
   - id: star_align
     in:
       - id: mate_1_fastq
-        source: picard_samtofastq/mate_1
+        source: mate_1
       - id: mate_2_fastq
-        source: picard_samtofastq/mate_2
+        source: mate_2
       - id: genome_dir
         source: genome_dir
       - id: nthreads

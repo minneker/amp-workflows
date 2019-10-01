@@ -19,13 +19,13 @@ inputs:
 outputs:
   - id: picard_riboints
     outputSource:
-      - prep_riboints/picard_riboints
+      - picard_riboints
     type: File
     'sbg:x': -119
     'sbg:y': -79
   - id: picard_refflat
     outputSource:
-      - prep_refflat/picard_refflat
+      - picard_refflat
     type: File
     'sbg:x': -115
     'sbg:y': -220

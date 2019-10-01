@@ -28,7 +28,7 @@ inputs:
 outputs:
   - id: genome_dir
     outputSource:
-      - star_index/genome_dir
+      - genome_dir
     type: File[]
     'sbg:x': -335.5869140625
     'sbg:y': -355
